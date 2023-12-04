@@ -350,17 +350,23 @@
   
   
         <a-scene
-        mindar-image="imageTargetSrc: ./assets/BuchanansMateriales/ART.mind; showStats: false; uiScanning: #example-scanning-overlay;"
-        embedded
-        renderer="colorManagement: true physicallyCorrectLights: true;"
+        mindar-image="imageTargetSrc: ./assets/BuchanansMateriales/ART.mind;
+        showStats: false;
+        uiScanning: #example-scanning-overlay;
+        filterMinCF: 0.0001; 
+        filterBeta: 0.001
+        "
+        embedded 
+        renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; precision: high;"
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
         stats = "false"
         >
   
+        
   
-  
-  
+          <a-entity listener></a-entity>  
+
           <a-assets>
             <!-- Imagen que se encuentra en el plano (se puede quitar si no se necesita) -->
             <!-- <img id="card" src="./img/qrcode-generado.png" /> -->
@@ -531,7 +537,8 @@
                 id="avatar"
                 gltf-model="#avatarModel"
                 rotation="90 0 0"
-                scale="1 1 1">
+                scale="1 1 1"
+                smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
                 </a-entity>
   
                 <!-- Iluminación Botella -->
@@ -551,7 +558,7 @@
               </a-entity>
   
           </a-entity>
-  
+          
   
         </a-scene>
   
